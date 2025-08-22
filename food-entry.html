@@ -77,12 +77,16 @@
                     </div>
                     <div class="card-body d-flex flex-column">
                         <div class="upload-area flex-grow-1 d-flex flex-column justify-content-center" id="photo">
-                            <div class="upload-icon">
+                            <form action="{%url 'image-process'%}" enctype="multipart/form-data" method="post">
+                               
+                               {{form.errors}}
+                                {%csrf_token%}
+                                <div class="upload-icon">
                                 <i class="fas fa-cloud-upload-alt"></i>
                             </div>
                             <h6 class="mb-2">Upload Food Photo</h6>
                             <p class="text-muted mb-3">Take a photo or upload an image of your food</p>
-                            <input type="file" class="form-control" id="food_photo" name="food_photo" accept="image/*"
+                            <input type="file" class="form-control" id="food_photo" name="picture" accept="image/*"
                                 style="display: none;">
                             <div class="d-grid gap-2">
                                 <button type="button" class="btn btn-success"
@@ -90,7 +94,11 @@
                                     <i class="fas fa-upload me-2"></i>Choose Photo
                                 </button>
                                 
+                                <button type="submit" class="btn btn-info">
+                                    <i class="fas fa-send me-2"></i>Submit
+                                </button>
                             </div>
+                            </form>
                         </div>
 
                         <!-- Photo Preview Area (hidden by default) -->
